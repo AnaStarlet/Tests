@@ -11,13 +11,9 @@ public class LoginTest {
     private LoginPage loginPage;
     @BeforeEach
     void setUp() {
-        // 1. Запускаем браузер (БЕЗ ВСЯКИХ OPTIONS)
         driver = new ChromeDriver();
-        // 2. Открываем сайт
         driver.get("https://www.saucedemo.com/");
-        // 3. Растягиваем окно
         driver.manage().window().maximize();
-        // 4. Создаем страницу
         loginPage = new LoginPage(driver);
     }
 
@@ -30,10 +26,8 @@ public class LoginTest {
 
     @Test
     void testSuccessfulLogin() {
-        // 3. Весь код поиска элементов исчез. Остался только вызов метода страницы!
         loginPage.login("standard_user", "secret_sauce");
 
-        // Проверяем заголовок через метод страницы
         assertEquals("Products", loginPage.getPageTitle(), "Должен отображаться заголовок Products");
     }
 
@@ -41,7 +35,6 @@ public class LoginTest {
     void testLoginWithWrongPassword() {
         loginPage.login("standard_user", "wrong_password");
 
-        // Проверяем ошибку через метод страницы
         assertTrue(loginPage.getErrorMessage().contains("Username and password do not match"),
                 "Текст ошибки не совпадает!");
     }
