@@ -9,8 +9,8 @@ public class ApiTest {
                 .when()
                 .get("https://api.github.com/users/octocat")
                 .then()
-                .statusCode(200) // Проверяем, что сервер ответил "ОК"
-                .body("login", equalTo("octocat")) // Проверяем, что в ответе пришло нужное имя
-                .body("id", equalTo(583231)); // Проверяем ID пользователя
+                .statusCode(200) 
+                .body("login", equalTo("octocat")) 
+                .body("id", equalTo(583231)); 
     }
 }
